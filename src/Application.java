@@ -12,7 +12,7 @@ public class Application extends JFrame{
 		//this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		this.setTitle("ChampoLove");
-		this.setSize(350,650);
+		this.setSize(700,700);
 		this.setBackground(new Color(237,245,255));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
