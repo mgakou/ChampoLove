@@ -9,6 +9,7 @@ public class Application extends JFrame{
 		VueInscription vueIns =new VueInscription();
 		
 		this.add(vueIns);
+		
 		//this.setLayout(new BorderLayout());
 		this.setVisible(true);
 		this.setTitle("ChampoLove");
