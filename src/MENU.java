@@ -1,16 +1,17 @@
 import javax.swing.*;
-
+import java.awt.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class menu implements ActionListener {
+public class MENU implements ActionListener {
     
     JFrame frame;
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem menuItem;
     
-    public menu() {
+    public MENU() {
+    	
         frame = new JFrame("Menu");
         menuBar = new JMenuBar();
         menu = new JMenu("Menu");
@@ -19,19 +20,36 @@ public class menu implements ActionListener {
         
         menu.add(menuItem);
         menuBar.add(menu);
-        frame.setJMenuBar(menuBar);
         
-        frame.setSize(700, 700);
+        frame.setJMenuBar(menuBar);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        int taillex = (int) screenSize.getWidth() * 3/4;
+        int tailley = (int) screenSize.getHeight()  * 3/4;
+        
+        frame.setSize(taillex,tailley);
+        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //frame.setUndecorated(true);
+        //frame.setVisible(true);
         frame.setResizable(false);
+        //frame.setBackground(new Color(0,245,255));
+        frame.getContentPane().setBackground(new Color(240, 199, 199)); 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         
+        
+        
 
         
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int centerX = (int) screenSize.getWidth() / 2;
-        int centerY = (int) screenSize.getHeight() / 2;
-        frame.setLocation(centerX - frame.getWidth() / 2, centerY - frame.getHeight() / 2);
+        
+        int tailleEcrx = (int) screenSize.getWidth() / 2;
+        int tailleEcry = (int) screenSize.getHeight() / 2;
+        frame.setLocation(tailleEcrx - frame.getWidth() / 2, tailleEcry - frame.getHeight() / 2);
+        
+        
+
+        
+        
         
         
     }
@@ -41,11 +59,13 @@ public class menu implements ActionListener {
             Application otherPage = new Application();
             otherPage.setVisible(true);
             frame.setVisible(false);
+            
         }
     }
     
     public static void main(String[] args) {
-        menu Menu = new menu();
+        MENU Menu = new MENU();
+        
     }
 }
 
