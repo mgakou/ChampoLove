@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -14,13 +15,13 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
-public class VueInscription extends JPanel{
+public class VueInsGauche extends JPanel{
 
-	public VueInscription() {
+	public VueInsGauche() {
 	    // Panel principal
-	    this.setLayout(new GridLayout(8, 2, 10, 10));
-	    this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-	    this.setBackground(new Color(240, 199, 199));
+//	    this.setLayout(new GridLayout(8, 2, 10, 10));
+//	    this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+//	    this.setBackground(new Color(240, 199, 199));
 
 	    // Label et champ Nom
 	    JLabel nomLabel = new JLabel("Nom : ");
