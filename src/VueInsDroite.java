@@ -22,6 +22,28 @@ public class VueInsDroite extends JPanel{
 		this.add(message,gbc);
 		
 		this.setBackground(Color.black);
+		
+		//autre possibilités
+		    
+		    
+		    JLabel label2 = new JLabel();
+		    label2.setText("<html><h1>Bienvenue</h1></html>");
+		    label2.setBounds(0, 20, 200, 50);
+		    JLabel label3 = new JLabel();
+		    label3.setText("<html><h2>dans notre aplication</h2></html>");
+		    label3.setBounds(0, 20, 200, 50);
+		    JLabel label4 = new JLabel();
+		    label4.setText("<html><h2>de rencontre</h2></html>");
+		    label4.setBounds(0, 20, 200, 50);
+
+		    add(label2);
+		    add(label3);
+		    add(label4);
+
+		    setVisible(true);
+		    
+		
+		this.setBackground(Color.red);
 	}
 
 }
