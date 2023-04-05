@@ -1,71 +1,89 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.*;
-import java.awt.event.*;
 
-public class MENU implements ActionListener {
+
+import java.awt.*;
+
+import javax.swing.*;
+
+
+public class MENU extends JPanel {
+
     
-    JFrame frame;
-    JMenuBar menuBar;
-    JMenu menu;
-    JMenuItem menuItem;
-    
+
     public MENU() {
     	
-        frame = new JFrame("Menu");
-        menuBar = new JMenuBar();
-        menu = new JMenu("Menu");
-        menuItem = new JMenuItem("Application");
-        menuItem.addActionListener(this);
+
+
         
-        menu.add(menuItem);
-        menuBar.add(menu);
-        
-        frame.setJMenuBar(menuBar);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        
-        int taillex = (int) screenSize.getWidth() * 3/4;
-        int tailley = (int) screenSize.getHeight()  * 3/4;
-        
-        frame.setSize(taillex,tailley);
-        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //frame.setUndecorated(true);
-        //frame.setVisible(true);
-        frame.setResizable(false);
-        //frame.setBackground(new Color(0,245,255));
-        frame.getContentPane().setBackground(new Color(240, 199, 199)); 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-        
-        
+        //Container c = JFrame.getContentPane();
+
         
 
         
-        
-        int tailleEcrx = (int) screenSize.getWidth() / 2;
-        int tailleEcry = (int) screenSize.getHeight() / 2;
-        frame.setLocation(tailleEcrx - frame.getWidth() / 2, tailleEcry - frame.getHeight() / 2);
-        
-        
+
+        // Création d'un panneau pour contenir les éléments de la page
+
 
         
+        this.setBackground(new Color(240, 199, 199));
+
         
+
+        // Ajout de la photo
+
+        ImageIcon imageIcon = new ImageIcon("image.jpg");
+
+        JLabel imageLabel = new JLabel(imageIcon);
+
+        this.add(imageLabel, BorderLayout.CENTER);
+
         
+
+        // Ajout du texte
+
+        JLabel textLabel = new JLabel("Bienvenue sur notre site !");
+
+        textLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        textLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        this.add(textLabel, BorderLayout.NORTH);
+
         
+
+        // Ajout des boutons
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 0));
+
+        JButton connectButton = new JButton("Se connecter");
+
+        
+
+        connectButton.addActionListener(e -> {
+
+            // Action à effectuer lors du clic sur le bouton "Se connecter"
+
+            //dispose(); // Fermeture de la fenêtre actuelle
+
+            //new LoginPage().setVisible(true); // Ouverture de la page de connexion
+
+        });
+
+
+
+        buttonPanel.add(connectButton);
+
+        
+        this.setLayout(new BorderLayout());
+        this.add(buttonPanel, BorderLayout.SOUTH);
+
+        
+
+        //add(this);
+
     }
+
     
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == menuItem) {
-            Application otherPage = new Application();
-            otherPage.setVisible(true);
-            frame.setVisible(false);
-            
-        }
-    }
-    
-    public static void main(String[] args) {
-        MENU Menu = new MENU();
-        
-    }
+
+
+
 }
-
