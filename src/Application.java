@@ -7,16 +7,18 @@ import javax.swing.JFrame;
 public class Application extends JFrame{
 
 	public Application() {
+		MENU menu = new MENU();
 		VueInsDroite vueInsD=new VueInsDroite();
 		VueInsGauche vueIns =new VueInsGauche();
-		this.add(vueInsD);
-		this.add(vueIns);
+		this.add(menu);
+		//this.add(vueInsD);
+		//this.add(vueIns);
 		
-		this.setLayout(new GridLayout(0,2));
+		//this.setLayout(new GridLayout(0,2));
 		this.setVisible(true);
 		this.setTitle("ChampoLove");
-		this.setSize(700,700);
-		this.setResizable(false);
+		this.setSize(400,550);
+		//this.setResizable(false);
 		
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int centerX = (int) screenSize.getWidth() / 2;
