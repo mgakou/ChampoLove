@@ -19,7 +19,7 @@ public class Application extends JFrame{
 		
 		this.setVisible(true);
 		this.setTitle("ChampoLove");
-		this.setSize(500,550);
+		this.setSize(450,600);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
