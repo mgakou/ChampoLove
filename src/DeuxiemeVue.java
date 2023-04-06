@@ -15,11 +15,11 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
-public class VueInsGauche extends JPanel{
+public class DeuxiemeVue extends JPanel{
 
-	public VueInsGauche() {
+	public DeuxiemeVue() {
 	    // Panel principal
-//	    this.setLayout(new GridLayout(8, 2, 10, 10));
+	    this.setLayout(new GridLayout(8, 2, 10, 10));
 //	    this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 //	    this.setBackground(new Color(240, 199, 199));
 
@@ -96,7 +96,7 @@ public class VueInsGauche extends JPanel{
             String tel = telField.getText();
             String genre = hommeButton.isSelected() ? "Homme" : "Femme";
             int age = (int) ageSpinner.getValue();
-
+            
          // Vérifier que tous les champs sont remplis
             if (nom.isEmpty() || prenom.isEmpty() || pays.isEmpty() || ville.isEmpty() || tel.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Veuillez remplir tous les champs", "Erreur", JOptionPane.ERROR_MESSAGE);
@@ -113,8 +113,15 @@ public class VueInsGauche extends JPanel{
             if (age < 18) {
                 JOptionPane.showMessageDialog(this, "Vous devez avoir au moins 18 ans pour vous inscrire", "Erreur", JOptionPane.ERROR_MESSAGE);
                 return;
-            }   
+            }
+            
+            TroisiemeVue troisiemeVue = new TroisiemeVue();
+            Application.getInstance().getContentPane().remove(DeuxiemeVue.this);
+            Application.getInstance().getContentPane().add(troisiemeVue);
+            Application.getInstance().revalidate();
+            Application.getInstance().repaint();
             // Faire quelque chose avec les données (par exemple les enregistrer dans une base de données)
+            
         });
         this.add(enregistrerButton);
 

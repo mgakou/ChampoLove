@@ -5,31 +5,28 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 public class Application extends JFrame{
-
+	// Je crée une instance de la classe Application
+	private static Application inst;
 	public Application() {
-		MENU menu = new MENU();
-		VueInsDroite vueInsD=new VueInsDroite();
-		VueInsGauche vueIns =new VueInsGauche();
-		this.add(menu);
-		//this.add(vueInsD);
-		//this.add(vueIns);
+		// inst est initialisée avec la référence à 
+		// l'instance courante de la JFrame principale dans le constructeur de la classe.
+		inst=this;
+
+		Controleur ctrl = new Controleur();
+		PremiereVue menu = new PremiereVue();
 		
-		//this.setLayout(new GridLayout(0,2));
+		this.add(menu);
+		
 		this.setVisible(true);
 		this.setTitle("ChampoLove");
-		this.setSize(400,550);
-		//this.setResizable(false);
-		
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int centerX = (int) screenSize.getWidth() / 2;
-        int centerY = (int) screenSize.getHeight() / 2;
-        this.setLocation(centerX - this.getWidth() / 2, centerY - this.getHeight() / 2);
-        
-        
-		//this.setBackground(new Color(237,245,255));
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(500,550);
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public static void main(String[] args) {
 		new Application();
+	}
+	public static Application getInstance() {
+		return inst;
 	}
 }
