@@ -115,7 +115,7 @@ public class DeuxiemeVue extends JPanel{
                 return;
             }
             
-            TroisiemeVue troisiemeVue = new TroisiemeVue();
+            AffinitesPanel troisiemeVue = new AffinitesPanel();
             Application.getInstance().getContentPane().remove(DeuxiemeVue.this);
             Application.getInstance().getContentPane().add(troisiemeVue);
             Application.getInstance().revalidate();

@@ -13,9 +13,9 @@ public class Application extends JFrame{
 		inst=this;
 
 		Controleur ctrl = new Controleur();
-		PremiereVue menu = new PremiereVue();
-		
-		this.add(menu);
+		//PremiereVue menu = new PremiereVue();
+		AffinitesPanel ap=new AffinitesPanel();
+		this.add(ap);
 		
 		this.setVisible(true);
 		this.setTitle("ChampoLove");
