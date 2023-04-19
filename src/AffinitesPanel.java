@@ -115,7 +115,7 @@ class CCC extends JComboBox {
 		if (selected instanceof JCheckBox) {
 			JCheckBox chk =(JCheckBox) selected;
 			chk.setSelected(!chk.isSelected());
-			
+			System.out.println(chk.getLabel());
 			repaint();
 			
 			Object[] selections=chk.getSelectedObjects();
