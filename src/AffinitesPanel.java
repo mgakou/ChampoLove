@@ -1,22 +1,38 @@
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
 
 public class AffinitesPanel extends JPanel {
+    JButton next;
+
     
     Vector<JCheckBox> v= new Vector<JCheckBox>();
+    Vector<JCheckBox> t= new Vector<JCheckBox>();
+    Vector<JCheckBox> o= new Vector<JCheckBox>();
+    Vector<JCheckBox> p= new Vector<JCheckBox>();
+    Vector<JCheckBox> s= new Vector<JCheckBox>();
+    
+    
+    
 
     public AffinitesPanel() {
-        //setLayout(new GridLayout(10, 1));
+    	
+      setLayout(new GridLayout(6, 2));
+      JLabel Jinterets = new JLabel("interets");
+      JLabel Jpassion = new JLabel("passion");
+      JLabel Jstyle_de_vie= new JLabel("style_de_vie");
+      JLabel Jeducation = new JLabel("education");
+      JLabel Jlangue = new JLabel("langue");
+      
+
+      
 
         
         String[] interets= {"Musique","Cinema","Lecture","Cuisine","Voyage","Sport"};//Peut etre transformé ce String en Ensemble
@@ -27,21 +43,51 @@ public class AffinitesPanel extends JPanel {
        
 
         for (int i=0;i<interets.length;i++) {
-        	v.add(new JCheckBox(interets[i],false));
+        	t.add(new JCheckBox(interets[i],false));
         }
         for (int i=0;i<passion.length;i++) {
         	v.add(new JCheckBox(passion[i],false));
         }
         for (int i=0;i<style_de_vie.length;i++) {
-        	v.add(new JCheckBox(style_de_vie[i],false));
+        	o.add(new JCheckBox(style_de_vie[i],false));
         }
         for (int i=0;i<education.length;i++) {
-        	v.add(new JCheckBox(education[i],false));
+        	p.add(new JCheckBox(education[i],false));
         }
         for (int i=0;i<langue.length;i++) {
-        	v.add(new JCheckBox(langue[i],false));
+        	s.add(new JCheckBox(langue[i],false));
         }
+        
+        
+        
+        this.add(Jinterets);
         this.add(new CCC(v));
+        this.add(Jpassion);
+        this.add(new CCC(t));
+        this.add(Jstyle_de_vie);
+        this.add(new CCC(o));
+        this.add(Jeducation);
+        this.add(new CCC(p));
+        this.add(Jlangue);
+        this.add(new CCC(s));
+        
+        next = new JButton("Next");
+        next.setBounds(150, 500, 150, 50); 
+        
+        next.addActionListener(e -> {
+            PremiereVue vue1 = new PremiereVue();
+            Application.getInstance().getContentPane().remove(AffinitesPanel.this);
+            Application.getInstance().getContentPane().add(vue1);
+            Application.getInstance().revalidate();
+            Application.getInstance().repaint();
+        });
+        
+        
+        this.add(next); 
+
+
+        
+        
        // getRootPane().add(new CCC(v));
    }
 }
@@ -75,7 +121,7 @@ class CCC extends JComboBox {
 			Object[] selections=chk.getSelectedObjects();
 			if (selections!=null) {
 				for(Object lastItem : selections) {
-					JOptionPane.showMessageDialog(null, lastItem.toString());
+					//JOptionPane.showMessageDialog(null, lastItem.toString());
 				}
 			}
 		}
@@ -83,7 +129,3 @@ class CCC extends JComboBox {
 		
 	}
 }
-
-
-
-
