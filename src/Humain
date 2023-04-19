@@ -1,21 +1,25 @@
 package champoLove;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class Humain {
 
 String sexe;
-String[] tabSex={"homme","femme"};
+static String[] tabSex={"homme","femme"};
 int age;
 int taille;
 String ville;
 String nationalité;
-String[] tabNa ={"Français","Belge","Suisse","Canada"};
+static String[] tabNa ={"Français","Belge","Suisse","Canada"};
 Color couleurCheveux;
 Color couleurPeau;
+int score;
+String loisir;
+String[] tabLoisir= {"interet","passion","style_de_vie","education","langue","sport"};
 
-public Humain(String s,int a, int t, String v,String n,Color cc,Color cp ) {
+public Humain(String s,int a, int t, String v,String n,Color cc,Color cp,String l,int sco) {
 	
 	this.sexe=s;
 	this.age=a;
@@ -24,23 +28,57 @@ public Humain(String s,int a, int t, String v,String n,Color cc,Color cp ) {
 	this.nationalité=n;
 	this.couleurCheveux=cc;
 	this.couleurPeau=cp;
-	
+	this.score=sco;
+	this.loisir=l;
 	
 
 }
 
-public PriorityQueue<Humain> match(){
-	Humain h1= new Humain(tabSex[0],30,180,"Paris",tabNa[0],Color.PINK,Color.GREEN);
-	Humain h2= new Humain(tabSex[1],18,182,"Lille",tabNa[1],Color.PINK,Color.GREEN);
-	Humain h3= new Humain(tabSex[1],40,170,"Paris",tabNa[0],Color.PINK,Color.GREEN);
-	Humain h4= new Humain(tabSex[1],24,160,"bordeaux",tabNa[2],Color.PINK,Color.GREEN);
-	Humain h5= new Humain(tabSex[1],32,172,"Strasborg",tabNa[3],Color.PINK,Color.GREEN);
+public PriorityQueue<Humain> match( ){
 	
-	return null;
+	PriorityQueue<Humain> score=new PriorityQueue<>();
 	
+	
+	ArrayList<Humain> listeFemme= new ArrayList<>();
+	
+	Humain h1= new Humain(tabSex[0],30,180,"Paris",tabNa[0],Color.WHITE,Color.GREEN,tabLoisir[0],0);
+	
+	Humain h2= new Humain(tabSex[1],18,182,"Lille",tabNa[1],Color.YELLOW,Color.GREEN,tabLoisir[0],0);
+	Humain h3= new Humain(tabSex[1],40,170,"Paris",tabNa[0],Color.GRAY,Color.GREEN,tabLoisir[0],0);
+	Humain h4= new Humain(tabSex[1],24,160,"bordeaux",tabNa[2],Color.YELLOW,Color.GREEN,tabLoisir[0],0);
+	Humain h5= new Humain(tabSex[1],32,172,"Strasborg",tabNa[3],Color.BLACK,Color.GREEN,tabLoisir[0],0);
+	listeFemme.add(h2);listeFemme.add(h3);listeFemme.add(h4);listeFemme.add(h5);
+	
+	for(int i=0;i<listeFemme.size();i++) {
+		
+		if (listeFemme.get(i).age<= h1.age-5 || listeFemme.get(i).age<= h1.age+5 ) {
+			listeFemme.get(i).age+=10;}
+		
+		else if(listeFemme.get(i).age<= h1.age-10 || listeFemme.get(i).age<= h1.age+10 ) {
+				listeFemme.get(i).age+=5;}
+		else {
+				listeFemme.get(i).age+=1;		
+	}
+		if (listeFemme.get(i).taille<= h1.age-5 || listeFemme.get(i).taille<= h1.taille+5 ) {
+			listeFemme.get(i).taille+=10;}
+		
+		else if(listeFemme.get(i).taille<= h1.age-10 || listeFemme.get(i).taille<= h1.taille+10 ) {
+				listeFemme.get(i).taille+=5;}
+		else {
+				listeFemme.get(i).age+=1;		
+	}
+		
+		for(int j=0;j<listeFemme.size();j++) {
+			score.add(listeFemme.get(i));
+
+	}
+	}
+
+	return score;
 }
 public static void main(String[] args) {
-	Humain h100= new Humain("Homme",30,180,"Paris","francais",Color.PINK,Color.GREEN);
-}
-
+System.out.println("Salut");
+	
+	
+	}
 }
