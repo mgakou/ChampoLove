@@ -1,33 +1,40 @@
+package champoLove;
+
 import java.awt.Color;
 import java.util.PriorityQueue;
 
 public class Humain {
 
-String[] sexe;
+String sexe;
+String[] tabSex={"homme","femme"};
 int age;
 int taille;
 String ville;
-String[] nationalité;
+String nationalité;
+String[] tabNa ={"Français","Belge","Suisse","Canada"};
 Color couleurCheveux;
 Color couleurPeau;
 
-public Humain(String s,int a, int t, String v,String[] n,Color cc,Color cp ) {
+public Humain(String s,int a, int t, String v,String n,Color cc,Color cp ) {
 	
-	this.sexe=["Homme","Femme"];
+	this.sexe=s;
 	this.age=a;
 	this.taille=t;
 	this.ville=v;
-	this.nationalité=["Français","Belge","Suisse","Canada"];
+	this.nationalité=n;
 	this.couleurCheveux=cc;
 	this.couleurPeau=cp;
+	
+	
+
 }
 
 public PriorityQueue<Humain> match(){
-	Humain h1= new Humain(this.sexe[0],30,180,"Paris",this.nationalité[0],Color.PINK,Color.GREEN);
-	Humain h2= new Humain(this.sexe[1],18,182,"Lille",this.nationalité[1],Color.PINK,Color.GREEN);
-	Humain h3= new Humain(this.sexe[1],40,170,"Paris",this.nationalité[0],Color.PINK,Color.GREEN);
-	Humain h4= new Humain(this.sexe[1],24,160,"bordeaux",this.nationalité[2],Color.PINK,Color.GREEN);
-	Humain h5= new Humain(this.sexe[1],32,172,"Strasborg",this.nationalité[3],Color.PINK,Color.GREEN);
+	Humain h1= new Humain(tabSex[0],30,180,"Paris",tabNa[0],Color.PINK,Color.GREEN);
+	Humain h2= new Humain(tabSex[1],18,182,"Lille",tabNa[1],Color.PINK,Color.GREEN);
+	Humain h3= new Humain(tabSex[1],40,170,"Paris",tabNa[0],Color.PINK,Color.GREEN);
+	Humain h4= new Humain(tabSex[1],24,160,"bordeaux",tabNa[2],Color.PINK,Color.GREEN);
+	Humain h5= new Humain(tabSex[1],32,172,"Strasborg",tabNa[3],Color.PINK,Color.GREEN);
 	
 	return null;
 	
