@@ -3,10 +3,10 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class PremiereVue extends JPanel {
-    JButton connectButton;
+public class ConnexionPanel extends JPanel {
+    JButton connectButton = new JButton("Se connecter");;
 
-    public PremiereVue() {
+    public ConnexionPanel() {
         this.setLayout(null); 
         this.setBackground(new Color(240, 199, 199));
 
@@ -23,18 +23,21 @@ public class PremiereVue extends JPanel {
         label.setBounds(50, 40, resizedIcon.getIconWidth(), resizedIcon.getIconHeight()); 
         this.add(label); 
 
-        connectButton = new JButton("Se connecter");
+        
         connectButton.setBounds(170, 500, 100, 50); 
 
-        connectButton.addActionListener(e -> {
-            DeuxiemeVue vue2 = new DeuxiemeVue();
-            Application.getInstance().getContentPane().remove(PremiereVue.this);
-            Application.getInstance().getContentPane().add(vue2);
-            Application.getInstance().revalidate();
-            Application.getInstance().repaint();
-        });
-
         this.add(connectButton); 
+//        connectButton.addActionListener(e -> {
+//            InscriptionPanel vue2 = new InscriptionPanel();
+//            Application.getInstance().getContentPane().remove(ConnexionPanel.this);
+//            Application.getInstance().getContentPane().add(vue2);
+//            Application.getInstance().revalidate();
+//            Application.getInstance().repaint();
+//        });
+
+    }
+    public JButton getButton() {
+        return connectButton;
     }
 }
 

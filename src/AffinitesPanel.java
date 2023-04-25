@@ -10,38 +10,35 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class AffinitesPanel extends JPanel {
-    JButton next;
-
+	
+	Vector<Object> v= new Vector();
+    Vector<Object> t= new Vector();
+    Vector<Object> o= new Vector();
+    Vector<Object> p= new Vector();
+    Vector<Object> s= new Vector();
     
-    Vector<JCheckBox> v= new Vector<JCheckBox>();
-    Vector<JCheckBox> t= new Vector<JCheckBox>();
-    Vector<JCheckBox> o= new Vector<JCheckBox>();
-    Vector<JCheckBox> p= new Vector<JCheckBox>();
-    Vector<JCheckBox> s= new Vector<JCheckBox>();
+    JButton chercherButton = new JButton("Chercher");;
     
-    
-    
-
     public AffinitesPanel() {
     	
       setLayout(new GridLayout(6, 2));
-      JLabel Jinterets = new JLabel("interets");
-      JLabel Jpassion = new JLabel("passion");
-      JLabel Jstyle_de_vie= new JLabel("style_de_vie");
-      JLabel Jeducation = new JLabel("education");
-      JLabel Jlangue = new JLabel("langue");
-      
+      JLabel labelInteret = new JLabel("Interets");
+      JLabel labelPassion = new JLabel("Passions");
+      JLabel labelStyleDeVie= new JLabel("Style de vie");
+      JLabel labelEducation = new JLabel("Education");
+      JLabel labelLangue = new JLabel("Langue");
 
-      
-
-        
-        String[] interets= {"Musique","Cinema","Lecture","Cuisine","Voyage","Sport"};//Peut etre transformé ce String en Ensemble
-        String[] passion= {"Danse","Theatre","Arts","Litterature","Photographie","Yoga"};//Peut etre transformé ce String en Ensemble
-        String[] style_de_vie= {"Végétarien","Vegan","Eco-responsable","Minimaliste"};//Peut etre transformé ce String en Ensemble
-        String[] education= {"BAC","BAC+3","BAC+5"}; //Peut etre transformé ce String en Ensemble
-        String[] langue= {"Français","Anglais","Italien","Espagnol"};//Peut etre transformé ce String en Ensemble
+      String[] interets= {"Musique","Cinema","Lecture","Cuisine","Voyage","Sport"};//Peut etre transformé ce String en Ensemble
+      String[] passion= {"Danse","Theatre","Arts","Litterature","Photographie","Yoga"};//Peut etre transformé ce String en Ensemble
+      String[] style_de_vie= {"Végétarien","Vegan","Eco-responsable","Minimaliste"};//Peut etre transformé ce String en Ensemble
+      String[] education= {"BAC","BAC+3","BAC+5"}; //Peut etre transformé ce String en Ensemble
+      String[] langue= {"Français","Anglais","Italien","Espagnol"};//Peut etre transformé ce String en Ensemble
        
-
+        t.add("Selectionner");
+        v.add("Selectionner");
+        o.add("Selectionner");
+        p.add("Selectionner");
+        s.add("Selectionner");
         for (int i=0;i<interets.length;i++) {
         	t.add(new JCheckBox(interets[i],false));
         }
@@ -60,72 +57,24 @@ public class AffinitesPanel extends JPanel {
         
         
         
-        this.add(Jinterets);
-        this.add(new CCC(v));
-        this.add(Jpassion);
-        this.add(new CCC(t));
-        this.add(Jstyle_de_vie);
-        this.add(new CCC(o));
-        this.add(Jeducation);
-        this.add(new CCC(p));
-        this.add(Jlangue);
-        this.add(new CCC(s));
-        
-        next = new JButton("Next");
-        next.setBounds(150, 500, 150, 50); 
-        
-        next.addActionListener(e -> {
-            PremiereVue vue1 = new PremiereVue();
-            Application.getInstance().getContentPane().remove(AffinitesPanel.this);
-            Application.getInstance().getContentPane().add(vue1);
-            Application.getInstance().revalidate();
-            Application.getInstance().repaint();
-        });
+        this.add(labelInteret);
+        this.add(new DropDownCheckBox(v));
+        this.add(labelPassion);
+        this.add(new DropDownCheckBox(t));
+        this.add(labelStyleDeVie);
+        this.add(new DropDownCheckBox(o));
+        this.add(labelEducation);
+        this.add(new DropDownCheckBox(p));
+        this.add(labelLangue);
+        this.add(new DropDownCheckBox(s));
         
         
-        this.add(next); 
-
-
         
-        
-       // getRootPane().add(new CCC(v));
+        this.add(chercherButton); 
    }
-}
-
-class CCC extends JComboBox {
-	
-	public CCC(Vector v) {
-		super(v);
-		
-		setRenderer(new Comborender());
-		
-		addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				ourIS();
-			}
-		});
-		
-	}
-	private void ourIS() {
-		// TODO Auto-generated method stub
-		Object selected = getSelectedItem();
-		if (selected instanceof JCheckBox) {
-			JCheckBox chk =(JCheckBox) selected;
-			chk.setSelected(!chk.isSelected());
-			System.out.println(chk.getLabel());
-			repaint();
-			
-			Object[] selections=chk.getSelectedObjects();
-			if (selections!=null) {
-				for(Object lastItem : selections) {
-					//JOptionPane.showMessageDialog(null, lastItem.toString());
-				}
-			}
-		}
-		
-		
-	}
+    
+    public JButton getChercherButton() {
+        return chercherButton;
+    }
+    
 }
