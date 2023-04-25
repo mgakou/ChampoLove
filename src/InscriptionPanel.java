@@ -1,14 +1,10 @@
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,17 +20,23 @@ public class InscriptionPanel extends JPanel{
 	JTextField prenomField = new JTextField(10);
 	JTextField villeField = new JTextField(10);
 	JTextField telField = new JTextField(10);
-	JRadioButton hommeButton = new JRadioButton("Homme");
-	JRadioButton femmeButton = new JRadioButton("Femme");
+	JLabel nomUtilisateur = new JLabel("Nom utilisateur");
+	JTextField nomUtilisateurField = new JTextField(10);
+
+    
+    JComboBox<String> listeDeroulanteGenre;
+   // JComboBox<Integer> listeDeroulanteAge;
+    
 	JSpinner ageSpinner = new JSpinner(new SpinnerNumberModel(18, 18, 100, 1));
 	JButton enregistrerButton = new JButton("Enregistrer");
 	
 	public InscriptionPanel() {
 	    // Panel principal
-	    this.setLayout(new GridLayout(7, 2));
+	    this.setLayout(new GridLayout(8, 2));
 //	    this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 //	    this.setBackground(new Color(240, 199, 199));
-
+	    this.add(nomUtilisateur);
+	    this.add(nomUtilisateurField);
 	    // Label et champ Nom
 	    JLabel nomLabel = new JLabel("Nom : ");
 	    nomLabel.setFont(new Font("Arial", Font.BOLD, 18));
@@ -71,17 +73,13 @@ public class InscriptionPanel extends JPanel{
 	    // Label et champ Genre
 	    JLabel genreLabel = new JLabel("Genre : ");
 	    genreLabel.setFont(new Font("Arial", Font.BOLD, 18));
+	    String[] options = {"Masculin", "Féminin"};
+	    listeDeroulanteGenre= new JComboBox<>(options);
 	    
-	    
-	    ButtonGroup genreGroup = new ButtonGroup();
-	    genreGroup.add(hommeButton);
-	    genreGroup.add(femmeButton);
-	    
-	    JPanel genrePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-	    genrePanel.add(hommeButton);
-	    genrePanel.add(femmeButton);
 	    this.add(genreLabel);
-	    this.add(genrePanel);
+	    this.add(listeDeroulanteGenre);
+	    
+	    
 
 	    // Label et champ Age
 	    JLabel ageLabel = new JLabel("Age : ");
@@ -99,7 +97,7 @@ public class InscriptionPanel extends JPanel{
 	public boolean verifie_champs() {
 	    String nom = nomField.getText();
 	    String prenom = prenomField.getText();
-	    int age = (int) ageSpinner.getValue();
+	   
 	    String tel = telField.getText();
 
 	    if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty()) {
@@ -113,6 +111,24 @@ public class InscriptionPanel extends JPanel{
 
 	    return true;
 	}
+	public void enregistrerUtilisateur() {
+		DonneesUtilisateurs donneesUtilisateurs = Application.getInstance().getDonneesUtilisateurs();
+
+	    // récupérer les données du formulaire
+	    String nomUtilisateur = nomUtilisateurField.getText();
+	    //String motDePasse = motDePasseTextField.getText();
+	    String prenom = prenomField.getText();
+	    String nom = nomField.getText();
+	    int age = (int) ageSpinner.getValue();
+	    //String email = emailTextField.getText();
+	    int telephone = Integer.parseInt(telField.getText()) ;
+	    // créer un objet Utilisateur avec les données
+	    Utilisateur utilisateur = new Utilisateur(nomUtilisateur, nom, prenom, telephone, age);
+	    // ajouter l'utilisateur au dictionnaire des données
+	    donneesUtilisateurs.ajouterUtilisateur(nomUtilisateur, utilisateur);
+	    System.out.println(utilisateur.toString());
+	}
+
 
 	public JTextField getNomField() {
         return nomField;

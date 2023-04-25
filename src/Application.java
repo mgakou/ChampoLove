@@ -11,15 +11,18 @@ public class Application extends JFrame{
 	private ConnexionPanel connexionPanel;
 	private InscriptionPanel ins;
 	private AffinitesPanel affiniteP;
-	
+	private DonneesUtilisateurs donneesUtilisateurs;
 	public Application() {
 		// inst est initialisée avec la référence à 
 		// l'instance courante de la JFrame principale dans le constructeur de la classe.
 		inst=this;
+		this.donneesUtilisateurs=new DonneesUtilisateurs();
+		
 		ConnexionPanel connexionPanel = new ConnexionPanel();
 		InscriptionPanel ins= new InscriptionPanel();
 		AffinitesPanel affiniteP=new AffinitesPanel();
 		Controleur ctrl = new Controleur(connexionPanel,ins,affiniteP);
+		
 		this.add(connexionPanel);
 		
 		this.setVisible(true);
@@ -34,4 +37,9 @@ public class Application extends JFrame{
 	public static Application getInstance() {
 		return inst;
 	}
+	// On s'assure qu'il y'a qu'une seule et unique instance durant l'execution
+	public DonneesUtilisateurs getDonneesUtilisateurs() {
+	    return donneesUtilisateurs;
+	}
+
 }

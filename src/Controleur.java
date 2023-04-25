@@ -30,6 +30,8 @@ public class Controleur implements ActionListener {
         } else if (e.getSource() == inscriptionPanel.getButtonEnregistrer()) {
         	// 
         	if (inscriptionPanel.verifie_champs()) {
+        		inscriptionPanel.enregistrerUtilisateur();
+        		
 	        	app.getContentPane().remove(inscriptionPanel);
 	            app.getContentPane().add(affinitePanel);
 	            app.getContentPane().revalidate();
