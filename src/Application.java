@@ -12,6 +12,7 @@ public class Application extends JFrame{
 	private InscriptionPanel ins;
 	private AffinitesPanel affiniteP;
 	private DonneesUtilisateurs donneesUtilisateurs;
+	private ResultatMatching score;
 	public Application() {
 		// inst est initialisée avec la référence à 
 		// l'instance courante de la JFrame principale dans le constructeur de la classe.
