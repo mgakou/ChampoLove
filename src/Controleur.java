@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controleur implements ActionListener {
+	private ResultatMatching score = new ResultatMatching();
     private ConnexionPanel connexionPanel;
     private InscriptionPanel inscriptionPanel;
     private AffinitesPanel affinitePanel;
@@ -12,8 +13,10 @@ public class Controleur implements ActionListener {
         this.inscriptionPanel = inscriptionPanel;
         this.affinitePanel = affinitePanel;
         this.app = Application.getInstance();
+        
         initializeButtons();
     }
+   
 
     private void initializeButtons() {
         connexionPanel.getButton().addActionListener(this);
@@ -42,6 +45,8 @@ public class Controleur implements ActionListener {
             app.getContentPane().add(connexionPanel);
             app.getContentPane().revalidate();
             app.getContentPane().repaint();
+            score.calculerScore();
+            
         }
         
     }
