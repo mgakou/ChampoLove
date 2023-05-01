@@ -119,43 +119,19 @@ public class InscriptionPanel extends JPanel{
 	    //String motDePasse = motDePasseTextField.getText();
 	    String prenom = prenomField.getText();
 	    String nom = nomField.getText();
+	    String genre = (String) listeDeroulanteGenre.getSelectedItem();
 	    int age = (int) ageSpinner.getValue();
 	    //String email = emailTextField.getText();
 	    int telephone = Integer.parseInt(telField.getText()) ;
 	    // créer un objet Utilisateur avec les données
-	    Utilisateur utilisateur = new Utilisateur(nomUtilisateur, nom, prenom, telephone, age);
+	    Utilisateur utilisateur = new Utilisateur(nomUtilisateur, nom, prenom,genre, telephone, age);
 	    // ajouter l'utilisateur au dictionnaire des données
 	    donneesUtilisateurs.ajouterUtilisateur(nomUtilisateur, utilisateur);
 	    System.out.println(utilisateur.toString());
 	}
 
 
-	public JTextField getNomField() {
-        return nomField;
-    }
 
-    public JTextField getPrenomField() {
-        return prenomField;
-    }
-
-
-    public JTextField getVilleField() {
-        return villeField;
-    }
-
-    public JTextField getTelField() {
-        return telField;
-    }
-
-    public String getGenre() {
-        if (hommeButton.isSelected()) {
-            return "Homme";
-        }
-        else return "Femme";
-    }
-    public JSpinner getAgeSpinner() {
-        return ageSpinner;
-    }
     
 }
         

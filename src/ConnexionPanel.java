@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class ConnexionPanel extends JPanel {
     JButton connectButton = new JButton("Se connecter");;
-
+    
     public ConnexionPanel() {
         this.setLayout(null); 
         this.setBackground(new Color(240, 199, 199));

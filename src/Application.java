@@ -23,7 +23,7 @@ public class Application extends JFrame{
 		AffinitesPanel affiniteP=new AffinitesPanel();
 		Controleur ctrl = new Controleur(connexionPanel,ins,affiniteP);
 		
-		this.add(connexionPanel);
+		this.add(affiniteP);
 		
 		this.setVisible(true);
 		this.setTitle("ChampoLove");

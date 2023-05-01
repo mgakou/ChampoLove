@@ -1,11 +1,12 @@
 
 public class Utilisateur {
-	String nomU,nom,prenom;
+	String nomU,nom,prenom,genre;
 	int age,tel;
-	public Utilisateur(String nU,String nom,String prenom, int tel,int age) {
+	public Utilisateur(String nU,String nom,String prenom,String genre, int tel,int age) {
 		this.nomU=nU;
 		this.nom=nom;
 		this.prenom=prenom;
+		this.genre=genre;
 		this.age=age;
 		this.tel=tel;
 	}
@@ -13,6 +14,6 @@ public class Utilisateur {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		return this.nomU+" "+ this.nom +" " + this.prenom+" "+this.age+" "+this.tel;
+		return this.nomU+" "+ this.nom +" " + this.prenom+" "+this.genre+" "+ this.age+" "+this.tel;
 	}
 }
