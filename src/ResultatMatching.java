@@ -12,6 +12,15 @@ public class ResultatMatching {
 	private Vector<JCheckBox> educationItems;
 	private Vector<JCheckBox> langueItems;
 	
+	public ResultatMatching() {
+	    interetsItems = new Vector<>();
+	    passionsItems = new Vector<>();
+	    styleDeVieItems = new Vector<>();
+	    educationItems = new Vector<>();
+	    langueItems = new Vector<>();
+	}
+
+	
 
 	
 	public int calculerScore() {
