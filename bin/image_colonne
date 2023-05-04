@@ -1,0 +1,52 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+public class DisplayImage extends JPanel {
+
+    public DisplayImage() {
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); // use BoxLayout with PAGE_AXIS
+        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5)); // add some padding
+
+        // create ImageIcons for each image and resize them
+        ImageIcon image1 = resizeImage("C:\\Users\\Matis\\Desktop\\image_projet\\femme_projet\\femme1.jpg", 100, 100);
+        ImageIcon image2 = resizeImage("C:\\Users\\Matis\\Desktop\\image_projet\\femme_projet\\femme2.jpg", 100, 100);
+        ImageIcon image3 = resizeImage("C:\\Users\\Matis\\Desktop\\image_projet\\femme_projet\\femme3.jpg", 100, 100);
+        ImageIcon image4 = resizeImage("C:\\Users\\Matis\\Desktop\\image_projet\\femme_projet\\femme4.jpg", 100, 100);
+
+        // create JLabels with ImageIcons and add them to the panel
+        add(new JLabel(image1));
+        add(Box.createVerticalStrut(5)); // add filler below image1
+        add(new JLabel(image2));
+        add(Box.createVerticalStrut(5)); // add filler below image2
+        add(new JLabel(image3));
+        add(Box.createVerticalStrut(5)); // add filler below image3
+        add(new JLabel(image4));
+        add(Box.createVerticalStrut(5)); // add filler below image4
+    }
+
+    // method to resize image
+    private ImageIcon resizeImage(String imagePath, int width, int height) {
+        try {
+            File file = new File(imagePath);
+            BufferedImage img = ImageIO.read(file);
+            Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            return new ImageIcon(scaledImg);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        // create JFrame and add ImagePanel to it
+        JFrame frame = new JFrame("Image Panel");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new DisplayImage());
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
