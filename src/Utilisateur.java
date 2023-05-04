@@ -12,8 +12,6 @@ public class Utilisateur {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		
 		return this.nomU+" "+ this.nom +" " + this.prenom+" "+this.genre+" "+ this.age+" "+this.tel;
 	}
 }
