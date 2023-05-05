@@ -1,5 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JCheckBox;
@@ -7,10 +9,12 @@ import javax.swing.JComboBox;
 
 public class DropDownCheckBox extends JComboBox{
 	
+	private Set<String> affinites_utilisateur = new HashSet<String>();
+
 	public DropDownCheckBox(Vector v) {
 		super(v);
 		
-		setRenderer(new Comborender());
+		setRenderer(new Comborender()); 
 		
 		addActionListener(new ActionListener() {
 			
@@ -20,7 +24,6 @@ public class DropDownCheckBox extends JComboBox{
 				ourIS();
 			}
 		});
-		
 	}
 	private void ourIS() {
 		// TODO Auto-generated method stub
@@ -28,16 +31,16 @@ public class DropDownCheckBox extends JComboBox{
 		if (selected instanceof JCheckBox) {
 			JCheckBox chk =(JCheckBox) selected;
 			chk.setSelected(!chk.isSelected());
+			affinites_utilisateur.add(chk.getLabel());
 			System.out.println(chk.getLabel());
 			repaint();
-			
-			Object[] selections=chk.getSelectedObjects();
-			if (selections!=null) {
-				for(Object lastItem : selections) {
-					//JOptionPane.showMessageDialog(null, lastItem.toString());
-				}
-			}
 		}
 	}
+
+	public Set<String> getAffinitesUtilisateur() {
+	    return affinites_utilisateur;
+	}
+
+	
 
 }

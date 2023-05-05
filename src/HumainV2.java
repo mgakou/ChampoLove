@@ -7,20 +7,17 @@ import javax.swing.ImageIcon;
 
 
 public class HumainV2 implements Comparable<HumainV2>{
-
-	
-	
-String sexe;
-public String[] tabSex={"homme","femme"};
-String prenom;
-int age;
-int taille;
-String ville;
-Color couleurCheveux;
-Color couleurPeau;
-int score;
-String loisir;
-ImageIcon photo;
+	String sexe;
+	public String[] tabSex={"homme","femme"};
+	String prenom;
+	int age;
+	int taille;
+	String ville;
+	Color couleurCheveux;
+	Color couleurPeau;
+	int score;
+	String loisir;
+	ImageIcon photo;
 
 public HumainV2(String s,String p, int a, int t, String v,Color cc,Color cp,String l,int sco,ImageIcon ph) {
 	

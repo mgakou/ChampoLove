@@ -1,11 +1,13 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -15,6 +17,7 @@ public class AffinitesPanel extends JPanel {
     Vector<Object> t= new Vector();
     Vector<Object> o= new Vector();
     Vector<Object> p= new Vector();
+
     
     JButton chercherButton = new JButton("Chercher");
     
@@ -60,12 +63,34 @@ public class AffinitesPanel extends JPanel {
         this.add(new DropDownCheckBox(o));
         this.add(labelEducation);
         this.add(new DropDownCheckBox(p));
-        
-        
+
         
         this.add(chercherButton); 
    }
-    
+    public Vector getV() {
+    	return v;
+    }
+    public Vector getT() {
+    	return t;
+    }
+    public Vector getO() {
+    	return o;
+    }
+    public Vector getP() {
+    	return p;
+    }
+    public Set<String> getSelectedItems(Vector v) {
+        Set<String> selection = new HashSet<>();
+        for (Object item : v) {
+            if (item instanceof JCheckBox) {
+                JCheckBox checkBox = (JCheckBox) item;
+                if (checkBox.isSelected()) {
+                    selection.add(checkBox.getText());
+                }
+            }
+        }
+        return selection;
+    }
     public JButton getChercherButton() {
         return chercherButton;
     }

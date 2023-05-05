@@ -8,22 +8,21 @@ public class Application extends JFrame{
 	
 	// Je crée une instance de la classe Application
 	private static Application inst;
-	private ConnexionPanel connexionPanel;
-	private InscriptionPanel ins;
-	private AffinitesPanel affiniteP;
+	
 	private DonneesUtilisateurs donneesUtilisateurs;
 	public Application() {
 		// inst est initialisée avec la référence à 
 		// l'instance courante de la JFrame principale dans le constructeur de la classe.
 		inst=this;
 		this.donneesUtilisateurs=new DonneesUtilisateurs();
-		
+		Modele modl = new Modele();
 		ConnexionPanel connexionPanel = new ConnexionPanel();
 		InscriptionPanel ins= new InscriptionPanel();
 		AffinitesPanel affiniteP=new AffinitesPanel();
-		Controleur ctrl = new Controleur(connexionPanel,ins,affiniteP);
 		
-		this.add(affiniteP);
+		Controleur ctrl = new Controleur(connexionPanel,ins,affiniteP,modl);
+		
+		this.add(ins);
 		
 		this.setVisible(true);
 		this.setTitle("ChampoLove");

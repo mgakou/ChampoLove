@@ -73,7 +73,7 @@ public class InscriptionPanel extends JPanel{
 	    // Label et champ Genre
 	    JLabel genreLabel = new JLabel("Genre : ");
 	    genreLabel.setFont(new Font("Arial", Font.BOLD, 18));
-	    String[] options = {"Masculin", "Féminin"};
+	    String[] options = {"Homme", "Femme"};
 	    listeDeroulanteGenre= new JComboBox<>(options);
 	    
 	    this.add(genreLabel);
@@ -90,6 +90,10 @@ public class InscriptionPanel extends JPanel{
 	    this.add(ageSpinner);
 
         this.add(enregistrerButton);
+    }
+	
+	public String getGenreSelectionne() {
+        return (String) listeDeroulanteGenre.getSelectedItem();
     }
 	public JButton getButtonEnregistrer() {
         return enregistrerButton;
@@ -128,6 +132,7 @@ public class InscriptionPanel extends JPanel{
 	    // ajouter l'utilisateur au dictionnaire des données
 	    donneesUtilisateurs.ajouterUtilisateur(nomUtilisateur, utilisateur);
 	    System.out.println(utilisateur.toString());
+	   
 	}
 
 

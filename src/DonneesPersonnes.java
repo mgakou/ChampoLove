@@ -1,5 +1,6 @@
-import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DonneesPersonnes {
@@ -17,6 +18,8 @@ public class DonneesPersonnes {
         return personnes.get(nom);
     }
 
-    
+    public List<Personne> getListePersonnes() {
+        return new ArrayList<Personne>(personnes.values());
+    }
     // Autres méthodes pour accéder et modifier les données des personnes
 }
