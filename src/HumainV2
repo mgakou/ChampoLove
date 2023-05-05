@@ -44,6 +44,6 @@ public String toString() {
 
 @Override
 public int compareTo(Humain o) {
-	return this.score - o.score;
+	return o.score - this.score;
 }
 }
