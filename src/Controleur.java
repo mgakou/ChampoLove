@@ -1,8 +1,14 @@
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class Controleur implements ActionListener {
 	//private ResultatMatching score = new ResultatMatching();
@@ -11,7 +17,7 @@ public class Controleur implements ActionListener {
     private AffinitesPanel affinitePanel;
     private Modele modl;
     private Application app;
-
+    private PersonnePanel personnePanel;
     public Controleur(ConnexionPanel connexionPanel, InscriptionPanel inscriptionPanel, AffinitesPanel affinitePanel, Modele modl) {
         this.connexionPanel = connexionPanel;
         this.inscriptionPanel = inscriptionPanel;
@@ -48,6 +54,8 @@ public class Controleur implements ActionListener {
         else if (e.getSource() == affinitePanel.getChercherButton()) {
 
         	String genreUtilisateur=inscriptionPanel.getGenreSelectionne();
+        	String villeUtilisateur=inscriptionPanel.getVilleSelectionne();
+        	String TrancheAge = affinitePanel.getTrancheAge();
         	System.out.println(genreUtilisateur);
         	
         	Vector v=affinitePanel.getV();
@@ -73,17 +81,27 @@ public class Controleur implements ActionListener {
             System.arraycopy(styleDeVieArray, 0, TabCombine, interetsArray.length + passionsArray.length, styleDeVieArray.length);
             System.arraycopy(educationArray, 0, TabCombine, interetsArray.length + passionsArray.length + styleDeVieArray.length, educationArray.length);
             // Appeler la méthode trouverMatch() avec les critères sélectionnés
-            List<Personne> resultats = modl.trouverMatch(TabCombine,genreUtilisateur);
+            List<Personne> resultats = modl.trouverMatch(TabCombine,genreUtilisateur,villeUtilisateur,TrancheAge);
+         // Création du conteneur des résultats des personnes
+            JPanel personnesPanel = new JPanel(new GridLayout(resultats.size(), 1));
             for (Personne pers : resultats) {
-                System.out.println(pers.getNom()+" - " + pers.getAge() + " ans");
+                personnePanel = new PersonnePanel(pers);
+                personnePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); // Ajoute une marge
+                personnesPanel.add(personnePanel);
+                System.out.println(pers.getNom() + " - " + pers.getAge() + " ans " + pers.getScore());
             }
 
-            // Faire quelque chose avec les résultats, par exemple les afficher dans un autre panneau
+            // Création du conteneur principal avec barre de défilement
+            JScrollPane scrollPane = new JScrollPane(personnesPanel);
+            //scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            scrollPane.setPreferredSize(new Dimension(400, 400));
+
             app.getContentPane().remove(affinitePanel);
-            app.getContentPane().add(connexionPanel);
-            
+            app.getContentPane().add(scrollPane); // Ajoute le JScrollPane
             app.getContentPane().revalidate();
             app.getContentPane().repaint();
+
         }
 
             

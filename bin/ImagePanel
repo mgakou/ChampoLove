@@ -1,4 +1,6 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
@@ -14,7 +16,7 @@ public class ImagePanel extends JPanel {
 
 	public ImagePanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS)); // use BoxLayout with PAGE_AXIS
-        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5)); // add some padding
+        setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 500)); // add some padding
     }
 
     // method to resize image icon
@@ -23,18 +25,33 @@ public class ImagePanel extends JPanel {
         Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(scaledImg);
     }
+ // method to add title to panel
+    private void addTitle() {
+        JLabel label = new JLabel("Résultat");
+        label.setFont(new Font("Arial", Font.BOLD, 20));
+        label.setAlignmentX(CENTER_ALIGNMENT);
+        add(label);
+        add(Box.createVerticalStrut(10));
+    }
 
     // method to add Humain to panel
     public void addHumain(Humain humain) {
         // create resized ImageIcon for Humain photo
         ImageIcon photoIcon = resizeImageIcon(humain.photo, 100, 100);
-        // create JLabel with Humain photo and add it to the panel
-        add(new JLabel(photoIcon));
-        // add filler below JLabel
+        // create JPanel for Humain with photo and name
+        JPanel humainPanel = new JPanel(new BorderLayout());
+        humainPanel.add(new JLabel(photoIcon), BorderLayout.WEST);
+        humainPanel.add(new JLabel(humain.prenom), BorderLayout.CENTER);
+        // add humainPanel to the panel
+        add(humainPanel);
+        // add filler below humainPanel
         add(Box.createVerticalStrut(5));
     }
+    
 
     public static void main(String[] args) {
+    	
+    	
         // create JFrame and ImagePanel
         JFrame frame = new JFrame("Image Panel");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,8 +106,9 @@ public class ImagePanel extends JPanel {
             Humain humain = queue.poll();
             imagePanel.addHumain(humain);
         }
-
+  
         // add ImagePanel to JFrame and display
+        
         frame.add(imagePanel);
         frame.pack();
         frame.setVisible(true);

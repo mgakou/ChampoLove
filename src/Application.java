@@ -8,7 +8,6 @@ public class Application extends JFrame{
 	
 	// Je crée une instance de la classe Application
 	private static Application inst;
-	
 	private DonneesUtilisateurs donneesUtilisateurs;
 	public Application() {
 		// inst est initialisée avec la référence à 
@@ -19,10 +18,9 @@ public class Application extends JFrame{
 		ConnexionPanel connexionPanel = new ConnexionPanel();
 		InscriptionPanel ins= new InscriptionPanel();
 		AffinitesPanel affiniteP=new AffinitesPanel();
-		
 		Controleur ctrl = new Controleur(connexionPanel,ins,affiniteP,modl);
 		
-		this.add(ins);
+		this.add(connexionPanel);
 		
 		this.setVisible(true);
 		this.setTitle("ChampoLove");

@@ -1,14 +1,12 @@
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -18,16 +16,15 @@ public class InscriptionPanel extends JPanel{
 	
 	JTextField nomField = new JTextField(10);
 	JTextField prenomField = new JTextField(10);
-	JTextField villeField = new JTextField(10);
 	JTextField telField = new JTextField(10);
 	JLabel nomUtilisateur = new JLabel("Nom utilisateur");
 	JTextField nomUtilisateurField = new JTextField(10);
 
     
     JComboBox<String> listeDeroulanteGenre;
-   // JComboBox<Integer> listeDeroulanteAge;
+    JComboBox<String> listeDeroulanteVille;
+    JComboBox<Integer> listeDeroulanteAge;
     
-	JSpinner ageSpinner = new JSpinner(new SpinnerNumberModel(18, 18, 100, 1));
 	JButton enregistrerButton = new JButton("Enregistrer");
 	
 	public InscriptionPanel() {
@@ -53,14 +50,13 @@ public class InscriptionPanel extends JPanel{
 	    this.add(prenomLabel);
 	    this.add(prenomField);
 
-
 	    // Label et champ Ville
 	    JLabel villeLabel = new JLabel("Ville : ");
 	    villeLabel.setFont(new Font("Arial", Font.BOLD, 18));
-	    
-	    villeField.setFont(new Font("Arial", Font.PLAIN, 14));
+	    String[] optionsVille = {"Paris","Bordeaux","Marseille","Nice","Toulouse","Albi"};
+	    listeDeroulanteVille=new JComboBox<>(optionsVille);
 	    this.add(villeLabel);
-	    this.add(villeField);
+	    this.add(listeDeroulanteVille);
 
 	    // Label et champ Numéro de téléphone
 	    JLabel telLabel = new JLabel("Numéro de téléphone : ");
@@ -73,8 +69,8 @@ public class InscriptionPanel extends JPanel{
 	    // Label et champ Genre
 	    JLabel genreLabel = new JLabel("Genre : ");
 	    genreLabel.setFont(new Font("Arial", Font.BOLD, 18));
-	    String[] options = {"Homme", "Femme"};
-	    listeDeroulanteGenre= new JComboBox<>(options);
+	    String[] optionsGenre = {"Homme", "Femme"};
+	    listeDeroulanteGenre= new JComboBox<>(optionsGenre);
 	    
 	    this.add(genreLabel);
 	    this.add(listeDeroulanteGenre);
@@ -84,10 +80,14 @@ public class InscriptionPanel extends JPanel{
 	    // Label et champ Age
 	    JLabel ageLabel = new JLabel("Age : ");
 	    ageLabel.setFont(new Font("Arial", Font.BOLD, 18));
+	    DefaultComboBoxModel ageModel = new DefaultComboBoxModel();
+	    for (int i = 18; i <= 99; i++) {
+	        ageModel.addElement(i);
+	    }
+	    listeDeroulanteAge= new JComboBox(ageModel);
 	    
-	    ageSpinner.setFont(new Font("Arial", Font.PLAIN, 14));
 	    this.add(ageLabel);
-	    this.add(ageSpinner);
+	    this.add(listeDeroulanteAge);
 
         this.add(enregistrerButton);
     }
@@ -95,6 +95,12 @@ public class InscriptionPanel extends JPanel{
 	public String getGenreSelectionne() {
         return (String) listeDeroulanteGenre.getSelectedItem();
     }
+	public String getVilleSelectionne() {
+		return (String)listeDeroulanteVille.getSelectedItem();
+	}
+	public int getAgeSelectionne() {
+		return (Integer) listeDeroulanteAge.getSelectedItem();
+	}
 	public JButton getButtonEnregistrer() {
         return enregistrerButton;
     }
@@ -123,12 +129,13 @@ public class InscriptionPanel extends JPanel{
 	    //String motDePasse = motDePasseTextField.getText();
 	    String prenom = prenomField.getText();
 	    String nom = nomField.getText();
-	    String genre = (String) listeDeroulanteGenre.getSelectedItem();
-	    int age = (int) ageSpinner.getValue();
+	    String genre =getGenreSelectionne();
+	    int age = getAgeSelectionne();
+	    String ville=getVilleSelectionne();
 	    //String email = emailTextField.getText();
 	    int telephone = Integer.parseInt(telField.getText()) ;
 	    // créer un objet Utilisateur avec les données
-	    Utilisateur utilisateur = new Utilisateur(nomUtilisateur, nom, prenom,genre, telephone, age);
+	    Utilisateur utilisateur = new Utilisateur(nomUtilisateur, nom, prenom,genre, telephone, age,ville);
 	    // ajouter l'utilisateur au dictionnaire des données
 	    donneesUtilisateurs.ajouterUtilisateur(nomUtilisateur, utilisateur);
 	    System.out.println(utilisateur.toString());

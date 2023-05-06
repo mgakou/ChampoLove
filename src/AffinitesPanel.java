@@ -1,13 +1,11 @@
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,17 +16,19 @@ public class AffinitesPanel extends JPanel {
     Vector<Object> o= new Vector();
     Vector<Object> p= new Vector();
 
-    
+    private JComboBox trancheAge;
     JButton chercherButton = new JButton("Chercher");
     
     public AffinitesPanel() {
     	
-      setLayout(new GridLayout(5, 2));
+      setLayout(new GridLayout(6, 2));
       JLabel labelInteret = new JLabel("Interets");
       JLabel labelPassion = new JLabel("Passions");
       JLabel labelStyleDeVie= new JLabel("Style de vie");
       JLabel labelEducation = new JLabel("Statut");
+      JLabel labelTrancheAge = new JLabel("Quelle tranche d'age ?");
 
+      
       String[] interets= {"Musique","Cinema","Lecture","Cuisine","Voyage","Sport"};//Peut etre transformé ce String en Ensemble
       String[] passion= {"Danse","Theatre","Arts","Litterature","Photographie","Yoga"};//Peut etre transformé ce String en Ensemble
       String[] style_de_vie= {"Végétarien","Vegan","Eco-responsable","Minimaliste"};//Peut etre transformé ce String en Ensemble
@@ -53,8 +53,8 @@ public class AffinitesPanel extends JPanel {
         	p.add(new JCheckBox(education[i],false));
         }
         
-        
-        
+        String[] option = {"18-25","25-35","35-45","Plus de 45"}; 
+        trancheAge = new JComboBox<>(option);
         this.add(labelInteret);
         this.add(new DropDownCheckBox(v));
         this.add(labelPassion);
@@ -63,10 +63,14 @@ public class AffinitesPanel extends JPanel {
         this.add(new DropDownCheckBox(o));
         this.add(labelEducation);
         this.add(new DropDownCheckBox(p));
-
+        this.add(labelTrancheAge);
+        this.add(trancheAge);
         
         this.add(chercherButton); 
    }
+    public String getTrancheAge() {
+		return (String) trancheAge.getSelectedItem();
+	}
     public Vector getV() {
     	return v;
     }
