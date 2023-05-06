@@ -6,12 +6,12 @@ public class Personne {
     private int score;
     private String nom;
     private int age;
-    private int telephone;
+    private long telephone;
     private String[] affinites;
     private File photo;
     private String description;
     private String ville;
-    public Personne(String genre,String nom, int age, int telephone,String ville, String[] affinites, File photo,String desc) {
+    public Personne(String genre,String nom, int age, long telephone,String ville, String[] affinites, File photo,String desc) {
         this.genre=genre;
     	this.nom = nom;
         this.age = age;

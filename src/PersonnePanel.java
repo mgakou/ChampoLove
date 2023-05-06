@@ -29,11 +29,11 @@ public class PersonnePanel extends JPanel {
         JLabel photoLabel = new JLabel(img);
 
         String age =String.valueOf(personne.getAge());
-        JLabel infos = new JLabel(personne.getNom()+", "+age+" ans");
+        JLabel infos = new JLabel(personne.getNom()+", "+age+" ans" +"\n"+personne.getVille());
         JLabel descriptionArea = new JLabel(personne.getDescription());
 
         // Configuration de la mise en page
-        setLayout(new GridLayout(1, 3));
+        setLayout(new GridLayout(1, 2));
         add(photoLabel);
         add(infos);
         add(descriptionArea);

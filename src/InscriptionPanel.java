@@ -81,7 +81,7 @@ public class InscriptionPanel extends JPanel{
 	    JLabel ageLabel = new JLabel("Age : ");
 	    ageLabel.setFont(new Font("Arial", Font.BOLD, 18));
 	    DefaultComboBoxModel ageModel = new DefaultComboBoxModel();
-	    for (int i = 18; i <= 99; i++) {
+	    for (int i = 18; i <= 60; i++) {
 	        ageModel.addElement(i);
 	    }
 	    listeDeroulanteAge= new JComboBox(ageModel);
