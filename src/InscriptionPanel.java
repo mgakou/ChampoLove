@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -7,38 +9,40 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.SpinnerNumberModel;
 
 public class InscriptionPanel extends JPanel{
 	
-	
-	JTextField nomField = new JTextField(10);
-	JTextField prenomField = new JTextField(10);
-	JTextField telField = new JTextField(10);
+	JTextField nomField = new JTextField();
+	JTextField prenomField = new JTextField();
+	JTextField telField = new JTextField();
 	JLabel nomUtilisateur = new JLabel("Nom utilisateur");
-	JTextField nomUtilisateurField = new JTextField(10);
-
+	JTextField nomUtilisateurField = new JTextField();
+	
     
     JComboBox<String> listeDeroulanteGenre;
     JComboBox<String> listeDeroulanteVille;
     JComboBox<Integer> listeDeroulanteAge;
-    
 	JButton enregistrerButton = new JButton("Enregistrer");
 	
 	public InscriptionPanel() {
+
 	    // Panel principal
 	    this.setLayout(new GridLayout(8, 2));
-//	    this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-//	    this.setBackground(new Color(240, 199, 199));
+	    
+	    this.setBackground(new Color(240, 199, 199));
+	    
+	    nomUtilisateur.setFont(new Font("Arial", Font.BOLD, 18));
+
 	    this.add(nomUtilisateur);
 	    this.add(nomUtilisateurField);
+	    
 	    // Label et champ Nom
 	    JLabel nomLabel = new JLabel("Nom : ");
 	    nomLabel.setFont(new Font("Arial", Font.BOLD, 18));
-	    
+	    //nomLabel.setBounds(300,100,100,100);
 	    nomField.setFont(new Font("Arial", Font.PLAIN, 14));
+	   // nomField.setBounds(300, 200, 100, 100);
 	    this.add(nomLabel);
 	    this.add(nomField);
 
@@ -88,8 +92,12 @@ public class InscriptionPanel extends JPanel{
 	    
 	    this.add(ageLabel);
 	    this.add(listeDeroulanteAge);
-
+	    JPanel emptyPanel = new JPanel();
+	    this.add(emptyPanel);
+	    
         this.add(enregistrerButton);
+        emptyPanel.setPreferredSize(new Dimension(Integer.MAX_VALUE, 0));
+        emptyPanel.setBackground(new Color(240, 199, 199));
     }
 	
 	public String getGenreSelectionne() {

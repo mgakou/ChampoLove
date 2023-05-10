@@ -9,11 +9,11 @@ public class Modele {
     private DonneesPersonnes donneesPersonnes;
     public Modele() {
         donneesPersonnes = new DonneesPersonnes();
-//        
+        
 //        String genreFemme2="Femme";
 //        String nomFemme2="Sophie Dupont";
 //        File img_f2 = new File("image_projet/femme_projet/2.jpg");
-//        String villeP2="Strasbourg";
+//        String villeP2="Nice";
 //        int ageFemme2=30;
 //        int numeroFemme2=13313453;
 //        String[] affinite_p2 = {"Voyages", "Danse", "Cuisine", "Sport"};
@@ -56,7 +56,7 @@ public class Modele {
         Random rand = new Random();
         String[] nomsFemme = {"Emma", "Alicia", "Camille", "Chloé", "Eva", "Lola", "Louise", "Léa", "Manon", "Julie"};
         String[] nomsHomme = {"Arthur", "Enzo", "Hugo", "Jules", "Louis", "Lucas", "Mathis", "Nathan", "Raphaël", "Théo"};
-        String[] villes = {"Paris", "Lyon", "Marseille", "Toulouse", "Bordeaux", "Nantes", "Lille", "Strasbourg", "Nice", "Rennes"};
+        String[] villes = {"Paris", "Marseille", "Toulouse", "Bordeaux", "Albi", "Nice"};
         String[] affinites = {"Musique","Cinema","Lecture","Cuisine","Voyage","Sport",
         					"Danse","Theatre","Arts","Litterature","Photographie","Yoga",
         					"Végétarien","Vegan","Eco-responsable","Minimaliste",
@@ -91,7 +91,7 @@ public class Modele {
             p = new Personne("Homme", nomHomme, ageHomme, numeroHomme, ville, affinite_p, img_h, descriptionP);
             donneesPersonnes.ajouterPersonne(nomHomme, p);
     }
-    }
+  }
     
 public List<Personne> trouverMatch(String[] critères, String genreUtilisateur, String villeUtilisateur, String trancheAge) {
 	List<Personne> personnes = donneesPersonnes.getListePersonnes();
@@ -137,7 +137,6 @@ public List<Personne> trouverMatch(String[] critères, String genreUtilisateur, 
             }
         }
     }
-
     // Tri des résultats en fonction du score décroissant
     Collections.sort(résultats, new Comparator<Personne>() {
         @Override

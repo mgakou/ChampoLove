@@ -21,5 +21,4 @@ public class DonneesPersonnes {
     public List<Personne> getListePersonnes() {
         return new ArrayList<Personne>(personnes.values());
     }
-    // Autres méthodes pour accéder et modifier les données des personnes
 }

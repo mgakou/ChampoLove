@@ -24,6 +24,9 @@ public class Personne {
     public String getGenre() {
     	return genre;
     }
+    public long getTel() {
+    	return telephone;
+    }
     public String getNom() {
     	return nom;
     }

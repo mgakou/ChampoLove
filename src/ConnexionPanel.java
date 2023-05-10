@@ -27,13 +27,6 @@ public class ConnexionPanel extends JPanel {
         connectButton.setBounds(170, 500, 100, 50); 
 
         this.add(connectButton); 
-//        connectButton.addActionListener(e -> {
-//            InscriptionPanel vue2 = new InscriptionPanel();
-//            Application.getInstance().getContentPane().remove(ConnexionPanel.this);
-//            Application.getInstance().getContentPane().add(vue2);
-//            Application.getInstance().revalidate();
-//            Application.getInstance().repaint();
-//        });
 
     }
     public JButton getButton() {

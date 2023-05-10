@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -31,6 +32,7 @@ public class Controleur implements ActionListener {
     private void initializeButtons() {
         connexionPanel.getButton().addActionListener(this);
         inscriptionPanel.getButtonEnregistrer().addActionListener(this);
+        affinitePanel.getButtonRetour().addActionListener(this);
         affinitePanel.getChercherButton().addActionListener(this);
     }
     @Override
@@ -44,13 +46,18 @@ public class Controleur implements ActionListener {
         	// 
         	if (inscriptionPanel.verifie_champs()) {
         		inscriptionPanel.enregistrerUtilisateur();
-        		
 	        	app.getContentPane().remove(inscriptionPanel);
 	            app.getContentPane().add(affinitePanel);
 	            app.getContentPane().revalidate();
 	            app.getContentPane().repaint();
         	}
-        } 
+        }
+        else if (e.getSource()==affinitePanel.getButtonRetour()) {
+        	app.getContentPane().remove(affinitePanel);
+            app.getContentPane().add(inscriptionPanel);
+            app.getContentPane().revalidate();
+            app.getContentPane().repaint();
+        }
         else if (e.getSource() == affinitePanel.getChercherButton()) {
 
         	String genreUtilisateur=inscriptionPanel.getGenreSelectionne();
@@ -82,11 +89,13 @@ public class Controleur implements ActionListener {
             System.arraycopy(educationArray, 0, TabCombine, interetsArray.length + passionsArray.length + styleDeVieArray.length, educationArray.length);
             // Appeler la méthode trouverMatch() avec les critères sélectionnés
             List<Personne> resultats = modl.trouverMatch(TabCombine,genreUtilisateur,villeUtilisateur,TrancheAge);
+            //JButton retour = new JButton("Retour");
          // Création du conteneur des résultats des personnes
             JPanel personnesPanel = new JPanel(new GridLayout(resultats.size(), 1));
             for (Personne pers : resultats) {
                 personnePanel = new PersonnePanel(pers);
                 personnePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); // Ajoute une marge
+        
                 personnesPanel.add(personnePanel);
                 System.out.println(pers.getNom() + " - " + pers.getAge() + " ans " + pers.getScore());
             }

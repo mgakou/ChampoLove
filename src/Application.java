@@ -9,6 +9,7 @@ public class Application extends JFrame{
 	// Je crée une instance de la classe Application
 	private static Application inst;
 	private DonneesUtilisateurs donneesUtilisateurs;
+	
 	public Application() {
 		// inst est initialisée avec la référence à 
 		// l'instance courante de la JFrame principale dans le constructeur de la classe.
@@ -25,7 +26,7 @@ public class Application extends JFrame{
 		this.setVisible(true);
 		this.setTitle("ChampoLove");
 		this.setSize(450,600);
-
+		setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public static void main(String[] args) {

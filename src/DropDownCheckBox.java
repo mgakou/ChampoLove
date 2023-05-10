@@ -10,7 +10,6 @@ import javax.swing.JComboBox;
 public class DropDownCheckBox extends JComboBox{
 	
 	private Set<String> affinites_utilisateur = new HashSet<String>();
-
 	public DropDownCheckBox(Vector v) {
 		super(v);
 		
@@ -27,6 +26,7 @@ public class DropDownCheckBox extends JComboBox{
 	}
 	private void ourIS() {
 		// TODO Auto-generated method stub
+
 		Object selected = getSelectedItem();
 		if (selected instanceof JCheckBox) {
 			JCheckBox chk =(JCheckBox) selected;
@@ -37,9 +37,9 @@ public class DropDownCheckBox extends JComboBox{
 		}
 	}
 
-	public Set<String> getAffinitesUtilisateur() {
-	    return affinites_utilisateur;
-	}
+//	public Set<String> getAffinitesUtilisateur() {
+//	    return affinites_utilisateur;
+//	}
 
 	
 
